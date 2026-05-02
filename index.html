@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>耶丝唐卡 Yes Thangka</title>
+  <meta name="description" content="耶丝唐卡 Yes Thangka，专注微型唐卡、嘎乌唐卡与藏传佛教艺术作品展示。微信 ykcn404，小红书 ykcn404。" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: #130706;
+      color: #fff;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .hero {
+      min-height: 88vh;
+      padding: 40px 7vw 70px;
+      background:
+        radial-gradient(circle at 80% 10%, rgba(222, 165, 72, .28), transparent 34%),
+        linear-gradient(180deg, #1b0706 0%, #130706 80%);
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 90px;
+    }
+    .logo-en {
+      color: #f5d58a;
+      font-size: 13px;
+      letter-spacing: .35em;
+    }
+    .logo-cn {
+      font-size: 22px;
+      margin-top: 4px;
+      font-weight: 600;
+    }
+    .contact-btn, .primary-btn {
+      border: none;
+      border-radius: 999px;
+      padding: 13px 24px;
+      background: #f0c86a;
+      color: #1a0b06;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 56px;
+      align-items: center;
+      max-width: 1240px;
+      margin: auto;
+    }
+    .tag {
+      display: inline-block;
+      border: 1px solid rgba(240, 200, 106, .35);
+      color: #f7d992;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 14px;
+      margin-bottom: 26px;
+    }
+    h1 {
+      font-size: clamp(46px, 7vw, 86px);
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+    .hero p {
+      max-width: 660px;
+      color: #d8c7bd;
+      font-size: 18px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 36px;
+    }
+    .secondary-btn {
+      border: 1px solid rgba(240, 200, 106, .45);
+      border-radius: 999px;
+      padding: 13px 24px;
+      color: #f5d58a;
+      background: transparent;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .featured {
+      padding: 16px;
+      border: 1px solid rgba(240, 200, 106, .18);
+      border-radius: 32px;
+      background: rgba(0, 0, 0, .26);
+      box-shadow: 0 28px 80px rgba(0,0,0,.45);
+    }
+    .featured img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: 24px;
+      display: block;
+    }
+    .section {
+      max-width: 1240px;
+      margin: auto;
+      padding: 86px 7vw;
+    }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: flex-end;
+      margin-bottom: 34px;
+    }
+    .section-label {
+      color: #f5d58a;
+      font-size: 13px;
+      letter-spacing: .35em;
+      margin-bottom: 10px;
+    }
+    h2 { font-size: clamp(32px, 4vw, 46px); line-height: 1.2; }
+    .section-desc { max-width: 460px; color: #a9978d; font-size: 14px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .card {
+      overflow: hidden;
+      border: 1px solid rgba(240, 200, 106, .12);
+      border-radius: 26px;
+      background: rgba(25, 14, 12, .8);
+      cursor: pointer;
+      transition: transform .25s ease, border-color .25s ease;
+    }
+    .card:hover { transform: translateY(-5px); border-color: rgba(240, 200, 106, .38); }
+    .card img {
+      width: 100%;
+      height: 370px;
+      object-fit: cover;
+      display: block;
+    }
+    .card-body { padding: 22px; }
+    .card h3 { font-size: 21px; margin-bottom: 4px; }
+    .card .en { color: #f0c86a; font-size: 14px; margin-bottom: 14px; }
+    .meta {
+      display: inline-block;
+      border: 1px solid rgba(240, 200, 106, .18);
+      border-radius: 999px;
+      padding: 4px 10px;
+      color: #cbb8ac;
+      font-size: 12px;
+      margin-bottom: 14px;
+    }
+    .card p { color: #bfaea5; font-size: 14px; }
+    .trust {
+      background: rgba(0,0,0,.22);
+      border-top: 1px solid rgba(240, 200, 106, .1);
+      border-bottom: 1px solid rgba(240, 200, 106, .1);
+    }
+    .trust-grid {
+      max-width: 1240px;
+      margin: auto;
+      padding: 60px 7vw;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .trust-item {
+      border: 1px solid rgba(240, 200, 106, .12);
+      border-radius: 24px;
+      padding: 28px;
+      background: rgba(25, 14, 12, .62);
+    }
+    .trust-item h3 { margin-bottom: 12px; font-size: 20px; }
+    .trust-item p { color: #bfaea5; font-size: 14px; }
+    .story {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .story p { color: #c9b9ae; margin-bottom: 18px; }
+    .footer-card {
+      border: 1px solid rgba(240, 200, 106, .16);
+      border-radius: 34px;
+      padding: 42px;
+      background: linear-gradient(120deg, #5b100d, #170b09);
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      align-items: center;
+    }
+    .footer-card p { color: #d8c7bd; margin-top: 10px; }
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      background: rgba(0, 0, 0, .82);
+      padding: 24px;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal.show { display: flex; }
+    .modal-content {
+      width: min(980px, 100%);
+      max-height: 92vh;
+      overflow: auto;
+      border: 1px solid rgba(240, 200, 106, .18);
+      border-radius: 28px;
+      background: #1a0d0b;
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      position: relative;
+    }
+    .modal-img {
+      width: 100%;
+      height: 100%;
+      min-height: 620px;
+      object-fit: cover;
+    }
+    .modal-info { padding: 38px; }
+    .close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      border: 1px solid rgba(240, 200, 106, .24);
+      background: rgba(0,0,0,.45);
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 3;
+    }
+    .modal-info h3 { font-size: 34px; margin-bottom: 6px; }
+    .modal-info .sub { color: #f0c86a; margin-bottom: 20px; }
+    .detail-list {
+      display: grid;
+      gap: 10px;
+      margin: 20px 0 24px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(0,0,0,.25);
+      color: #cdbdb4;
+      font-size: 14px;
+    }
+    .modal-info p { color: #d8c7bd; margin-bottom: 14px; }
+    .consult {
+      display: block;
+      text-align: center;
+      margin-top: 24px;
+      background: #f0c86a;
+      color: #1a0b06;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+    }
+    @media (max-width: 900px) {
+      .hero-grid, .story, .modal-content { grid-template-columns: 1fr; }
+      .grid, .trust-grid { grid-template-columns: 1fr; }
+      .nav, .section-head, .footer-card { align-items: flex-start; flex-direction: column; }
+      .card img { height: 420px; }
+      .modal-img { min-height: auto; max-height: 480px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav">
+      <div>
+        <div class="logo-en">YES THANGKA</div>
+        <div class="logo-cn">耶丝唐卡</div>
+      </div>
+      <a class="contact-btn" href="https://www.xiaohongshu.com/search_result?keyword=ykcn404" target="_blank">小红书 ykcn404</a>
+    </nav>
+
+    <div class="hero-grid">
+      <div>
+        <div class="tag">Miniature Thangka · Gawu Pendant · Tibetan Buddhist Art</div>
+        <h1>耶丝唐卡作品馆</h1>
+        <p>专注展示微型唐卡、嘎乌唐卡与藏传佛教艺术作品。以高清细节、清晰题材、专业介绍，呈现每一件唐卡的艺术价值与收藏气质。</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#works">查看作品</a>
+          <a class="secondary-btn" href="#story">了解耶丝唐卡</a>
+        </div>
+      </div>
+      <div class="featured">
+        <img src="images/yamantaka.jpg" alt="大威德金刚唐卡" />
+      </div>
+    </div>
+  </header>
+
+  <section id="works" class="section">
+    <div class="section-head">
+      <div>
+        <div class="section-label">SELECTED WORKS</div>
+        <h2>精选唐卡作品</h2>
+      </div>
+      <p class="section-desc">点击任意作品，可查看题材、材质、尺寸、中文说明与英文介绍。后续可继续增加佛部、财神、护法、本尊、坛城等分类。</p>
+    </div>
+
+    <div class="grid" id="workGrid"></div>
+  </section>
+
+  <section class="trust">
+    <div class="trust-grid">
+      <div class="trust-item">
+        <h3>手绘作品</h3>
+        <p>作品以微型手绘唐卡为核心，突出线条、色彩、构图与细节完成度。</p>
+      </div>
+      <div class="trust-item">
+        <h3>嘎乌佩戴与收藏</h3>
+        <p>适合作为日常佩戴、个人供奉、收藏展示，也适合灵性艺术礼赠。</p>
+      </div>
+      <div class="trust-item">
+        <h3>专业题材说明</h3>
+        <p>每件作品配套题材分类、象征意义与适合人群说明，降低客户理解成本。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="story" class="section story">
+    <div>
+      <div class="section-label">STUDIO STORY</div>
+      <h2>以收藏之心，呈现藏传艺术的庄严与细节。</h2>
+    </div>
+    <div>
+      <p>Yes Thangka / 耶丝唐卡专注于微型唐卡、嘎乌唐卡与藏传佛教艺术作品展示。网站以作品图片为核心，配合作品名称、题材、尺寸、画师、寓意与收藏说明，让客户快速理解每一件作品的特点。</p>
+      <p>后续可以继续增加作品详情页、题材分类、微信咨询按钮、小红书跳转、英文介绍、收藏指南与已结缘作品归档。</p>
+      <p>微信：ykcn404 · 小红书：ykcn404 · Yes Thangka</p>
+    </div>
+  </section>
+
+  <footer class="section">
+    <div class="footer-card">
+      <div>
+        <div class="section-label">INQUIRY</div>
+        <h2>想了解某一件唐卡？</h2>
+        <p>可通过微信 ykcn404 或小红书 ykcn404 咨询作品题材、尺寸、价格、画师与收藏细节。</p>
+      </div>
+      <a class="contact-btn" href="https://www.xiaohongshu.com/search_result?keyword=ykcn404" target="_blank">立即咨询</a>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <button class="close" onclick="closeModal()">×</button>
+      <img class="modal-img" id="modalImage" src="" alt="" />
+      <div class="modal-info">
+        <h3 id="modalCn"></h3>
+        <div class="sub" id="modalEn"></div>
+        <div class="detail-list">
+          <div id="modalCategory"></div>
+          <div id="modalSize"></div>
+          <div id="modalMaterial"></div>
+        </div>
+        <p id="modalDesc"></p>
+        <p id="modalEnglish"></p>
+        <a class="consult" href="https://www.xiaohongshu.com/search_result?keyword=ykcn404" target="_blank">小红书 / 微信咨询：ykcn404</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const works = [
+      {
+        cn: "阿弥陀佛唐卡",
+        en: "Amitabha Buddha Thangka",
+        category: "佛部",
+        size: "微型嘎乌唐卡 / 吊坠款",
+        material: "手绘 / 矿物颜料 / 金属嘎乌框",
+        image: "images/amitabha.jpg",
+        desc: "此幅阿弥陀佛唐卡以正统坐姿呈现，面相安定、色彩温润，整体气质宁静庄严。背景花卉与供品构图细腻，层次清晰，体现出较高完成度的手绘工艺。阿弥陀佛象征无量光与无量寿，常用于净土修持、内心安定与情绪沉淀。",
+        english: "This miniature Amitabha Thangka presents the Buddha in a serene seated posture, with balanced composition and refined detailing. Amitabha represents infinite light and longevity, often associated with inner peace and Pure Land practice."
+      },
+      {
+        cn: "白六臂玛哈嘎拉",
+        en: "White Six-Armed Mahakala Thangka",
+        category: "护法",
+        size: "微型嘎乌唐卡 / 吊坠款",
+        material: "手绘 / 金属外框",
+        image: "images/white-mahakala.jpg",
+        desc: "画面色彩浓烈且对比强烈，细节密集，整体视觉张力突出。金色嘎乌框与内部画面形成强烈对比，增强收藏质感。白六臂玛哈嘎拉属于玛哈嘎拉体系中的重要化现之一，兼具护法与财富守护属性，强调资源守护、障碍清除与稳定增长。",
+        english: "This White Six-Armed Mahakala Thangka features dense detailing and strong visual contrast. White Six-Armed Mahakala represents both protection and wealth preservation, emphasizing resource stability and obstacle removal."
+      },
+      {
+        cn: "大黑天唐卡",
+        en: "Mahakala Thangka",
+        category: "护法",
+        size: "微型嘎乌唐卡 / 吊坠款",
+        material: "手绘 / 金属外框",
+        image: "images/mahakala.jpg",
+        desc: "大黑天形象威猛，构图复杂，线条密集且节奏感强。整体画面动势明显，表现出典型护法题材的力量感。该类题材强调守护、驱障与环境净化，属于藏传体系中极具代表性的护法形象。",
+        english: "This Mahakala Thangka presents a dynamic and intricate composition, with powerful visual rhythm and dense linework typical of wrathful protector deities. Mahakala represents protection, obstacle removal, and energetic stabilization."
+      },
+      {
+        cn: "大威德金刚唐卡",
+        en: "Yamantaka Thangka",
+        category: "本尊 / 忿怒尊",
+        size: "微型嘎乌唐卡 / 吊坠款",
+        material: "手绘 / 金属外框",
+        image: "images/yamantaka.jpg",
+        desc: "以蓝色主尊为核心，配合金色外框形成强烈对比。画面层次复杂，细节极为丰富，是典型高难度唐卡题材。大威德金刚象征破除无明与恐惧，在密宗体系中具有极高地位。",
+        english: "Centered around a striking blue deity, this Yamantaka Thangka features complex layering and intricate detail. Yamantaka symbolizes the destruction of ignorance and fear."
+      },
+      {
+        cn: "黑财神唐卡",
+        en: "Black Dzambhala Thangka",
+        category: "财神",
+        size: "微型嘎乌唐卡 / 吊坠款",
+        material: "手绘 / 金属外框",
+        image: "images/black-dzambhala.jpg",
+        desc: "整体色彩更具现代视觉感，粉蓝背景与金框形成对比，画面明亮，辨识度高。黑财神通常与财富掌控力与资源聚集相关，强调力量与执行层面的财运。",
+        english: "This Black Dzambhala Thangka features a vibrant palette with strong contrast between background and frame. Black Dzambhala is associated with wealth control and accumulation."
+      },
+      {
+        cn: "黄财神唐卡",
+        en: "Yellow Dzambhala Thangka",
+        category: "财神",
+        size: "微型嘎乌唐卡 / 吊坠款",
+        material: "手绘 / 金属外框",
+        image: "images/yellow-dzambhala.jpg",
+        desc: "整体色调温暖，构图平衡，视觉亲和力强。背景与主体形成自然过渡，适合作为展示或首页主推作品。黄财神是常见的财富本尊之一，象征财富增长与物质资源的稳定积累。",
+        english: "With a warm color palette and balanced composition, this Yellow Dzambhala Thangka is visually approachable and suitable as a featured piece. Yellow Dzambhala symbolizes growth and material abundance."
+      }
+    ];
+
+    const grid = document.getElementById("workGrid");
+    works.forEach((work, index) => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.onclick = () => openModal(index);
+      card.innerHTML = `
+        <img src="${work.image}" alt="${work.cn}">
+        <div class="card-body">
+          <h3>${work.cn}</h3>
+          <div class="en">${work.en}</div>
+          <div class="meta">${work.category}</div>
+          <p>${work.desc.slice(0, 56)}...</p>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    function openModal(index) {
+      const work = works[index];
+      document.getElementById("modalImage").src = work.image;
+      document.getElementById("modalImage").alt = work.cn;
+      document.getElementById("modalCn").innerText = work.cn;
+      document.getElementById("modalEn").innerText = work.en;
+      document.getElementById("modalCategory").innerText = "分类：" + work.category;
+      document.getElementById("modalSize").innerText = "尺寸：" + work.size;
+      document.getElementById("modalMaterial").innerText = "材质：" + work.material;
+      document.getElementById("modalDesc").innerText = work.desc;
+      document.getElementById("modalEnglish").innerText = work.english;
+      document.getElementById("modal").classList.add("show");
+    }
+
+    function closeModal() {
+      document.getElementById("modal").classList.remove("show");
+    }
+
+    document.getElementById("modal").addEventListener("click", function(e) {
+      if (e.target.id === "modal") closeModal();
+    });
+  </script>
+</body>
+</html>
